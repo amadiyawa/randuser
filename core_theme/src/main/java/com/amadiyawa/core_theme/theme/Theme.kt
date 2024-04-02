@@ -1,4 +1,4 @@
-package com.amadiyawa.ennovtestapp.ui.theme
+package com.amadiyawa.core_theme.theme
 
 import android.app.Activity
 import android.os.Build

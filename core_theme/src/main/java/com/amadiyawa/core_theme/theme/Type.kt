@@ -1,4 +1,4 @@
-package com.amadiyawa.ennovtestapp.ui.theme
+package com.amadiyawa.core_theme.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

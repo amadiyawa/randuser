@@ -1,4 +1,4 @@
-package com.amadiyawa.ennovtestapp.ui.theme
+package com.amadiyawa.core_theme.theme
 
 import androidx.compose.ui.graphics.Color
 
