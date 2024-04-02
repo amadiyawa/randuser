@@ -16,25 +16,33 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = DarkPrimary,
+    primaryContainer = DarkPrimaryVariant,
+    secondary = DarkSecondary,
+    secondaryContainer = DarkSecondaryVariant,
+    background = DarkBackground,
+    surface = DarkSurface,
+    error = DarkError,
+    onPrimary = DarkOnPrimary,
+    onSecondary = DarkOnSecondary,
+    onBackground = DarkOnBackground,
+    onSurface = DarkOnSurface,
+    onError = DarkOnError
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = LightPrimary,
+    primaryContainer = LightPrimaryVariant,
+    secondary = LightSecondary,
+    secondaryContainer = LightSecondaryVariant,
+    background = LightBackground,
+    surface = LightSurface,
+    error = LightError,
+    onPrimary = LightOnPrimary,
+    onSecondary = LightOnSecondary,
+    onBackground = LightOnBackground,
+    onSurface = LightOnSurface,
+    onError = LightOnError
 )
 
 @Composable
@@ -64,7 +72,8 @@ fun EnnovTestAppTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = EnnovTestAppTypography,
+        shapes = EnnovTestAppShapes,
         content = content
     )
 }
