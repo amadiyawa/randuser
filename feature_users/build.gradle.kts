@@ -1,13 +1,11 @@
-
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    kotlin("kapt")
-    alias(libs.plugins.hiltAndroidGradlePlugin)
+    kotlin("plugin.serialization") version "1.5.30"
 }
 
 android {
-    namespace = "com.amadiyawa.feature_base"
+    namespace = "com.amadiyawa.feature_users"
     compileSdk = 34
 
     defaultConfig {
@@ -42,30 +40,7 @@ android {
 }
 
 dependencies {
-
-    api(libs.kotlin)
-    api(libs.playCore)
-    api(libs.androidx.core.ktx)
-    api(libs.timber)
-    api(libs.androidx.appcompat)
-    api(libs.coroutines)
-    api(libs.material)
-    api(libs.androidx.activity.compose)
-    api(libs.navigationCompose)
-    api(platform(libs.androidx.compose.bom))
-    api(libs.androidx.material3)
-    api(libs.androidx.material3.android)
-    api(libs.material3WindowSize)
-    api(libs.bundles.koin)
-    api(libs.bundles.retrofit)
-    api(libs.bundles.compose)
-    api(libs.bundles.koin)
-    api(libs.bundles.retrofit)
-    api(libs.bundles.lifecycle)
-    api(libs.bundles.room)
-    api(libs.hilt)
-    kapt(libs.hiltCompiler)
-
+    api(projects.featureBase)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

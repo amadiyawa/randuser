@@ -7,33 +7,47 @@ import retrofit2.Callback
 import retrofit2.Response
 
 internal class ApiResultCall<T>(
-    private val delegate: Call<T>
+    private val callDelegate: Call<T>,
 ) : Call<ApiResult<T>> {
-    override fun execute(): Response<ApiResult<T>> {
-        throw UnsupportedOperationException("ApiResultCall doesn't support execute")
-    }
 
-    override fun enqueue(callback: Callback<ApiResult<T>>) {
-        delegate.enqueue(object : Callback<T> {
+    @Suppress("detekt.MagicNumber")
+    override fun enqueue(callback: Callback<ApiResult<T>>) = callDelegate.enqueue(
+        object : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {
-                callback.onResponse(this@ApiResultCall, Response.success(ApiResult.Success(response.body()!!)))
+                response.body()?.let {
+                    when (response.code()) {
+                        in 200..208 -> {
+                            callback.onResponse(this@ApiResultCall, Response.success(ApiResult.Success(it)))
+                        }
+                        in 400..409 -> {
+                            callback.onResponse(
+                                this@ApiResultCall,
+                                Response.success(ApiResult.Error(response.code(), response.message())),
+                            )
+                        }
+                    }
+                } ?: callback.onResponse(this@ApiResultCall, Response.success(ApiResult.Error(123, "message")))
             }
 
-            override fun onFailure(call: Call<T>, t: Throwable) {
-                callback.onResponse(this@ApiResultCall, Response.success(ApiResult.Exception(t)))
+            override fun onFailure(call: Call<T>, throwable: Throwable) {
+                callback.onResponse(this@ApiResultCall, Response.success(ApiResult.Exception(throwable)))
+                call.cancel()
             }
-        })
-    }
+        },
+    )
 
-    override fun isExecuted(): Boolean = delegate.isExecuted
+    override fun clone(): Call<ApiResult<T>> = ApiResultCall(callDelegate.clone())
 
-    override fun clone(): Call<ApiResult<T>> = ApiResultCall(delegate.clone())
+    override fun execute(): Response<ApiResult<T>> =
+        throw UnsupportedOperationException("ResponseCall does not support execute.")
 
-    override fun isCanceled(): Boolean = delegate.isCanceled
+    override fun isExecuted(): Boolean = callDelegate.isExecuted
 
-    override fun cancel() = delegate.cancel()
+    override fun cancel() = callDelegate.cancel()
 
-    override fun request(): Request = delegate.request()
+    override fun isCanceled(): Boolean = callDelegate.isCanceled
 
-    override fun timeout(): Timeout = delegate.timeout()
+    override fun request(): Request = callDelegate.request()
+
+    override fun timeout(): Timeout = callDelegate.timeout()
 }
