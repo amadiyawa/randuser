@@ -1,10 +1,14 @@
 [versions]
 agp = "8.3.1"
 kotlin = "1.9.23"
+
+# KSP depends on specific Kotlin version, so it must be upgraded together with Kotlin (disabled in Renovate)
+# https://repo.maven.apache.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/
+kotlinSymbolProcessing = "1.9.22-1.0.17"
+
 coroutines = "1.8.0"
 retrofit = "2.11.0"
 okhttp = "4.12.0"
-koin = "3.5.3"
 coil = "2.6.0"
 lifecycle = "2.7.0"
 room = "2.6.1"
@@ -13,6 +17,7 @@ kotlinxSerializationConverter = "1.0.0"
 coreKtx = "1.12.0"
 playCore = "1.10.3"
 junit = "4.13.2"
+androidJUnit5 = "1.10.0.0"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 lifecycleRuntimeKtx = "2.7.0"
@@ -25,11 +30,18 @@ material3Android = "1.2.1"
 timber = "5.0.1"
 navigationCompose = "2.7.7"
 composeFoundation = "1.6.4"
+detekt = "1.23.6"
 kotlinCompilerExtensionVersion = "1.5.11"
 hilt = "2.51.1"
 material3WindowSizeClassAndroid = "1.2.1"
 material3WindowSizeClassAndroidVersion = "1.2.1"
 material3WindowSize = "1.2.1"
+koin-bom = "3.5.3"
+
+spotless = "6.25.0"
+navigation = "2.7.7"
+testLogger = "3.2.0"
+
 
 [libraries]
 kotlin = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
@@ -39,8 +51,6 @@ kotlinxSerializationConverter = { module = "com.jakewharton.retrofit:retrofit2-k
 serializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serializationJson" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 okhttpInterceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
-koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
-koinNavigation = { group = "io.insert-koin", name = "koin-androidx-navigation", version.ref = "koin" }
 playCore = { group = "com.google.android.play", name = "core", version.ref = "playCore" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 viewmodelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
@@ -70,6 +80,12 @@ roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hiltCompiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 material3WindowSize = { group = "androidx.compose.material3", name = "material3-window-size-class", version.ref = "material3WindowSize" }
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
+koin-core = { module = "io.insert-koin:koin-core" }
+koin-androidx-navigation = { module = "io.insert-koin:koin-androidx-navigation" }
+koin-compose = { module = "io.insert-koin:koin-compose" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
+koin-androidx-compose-navigation = { module = "io.insert-koin:koin-androidx-compose-navigation" }
 
 # Test dependencies
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -81,11 +97,18 @@ retrofit = ["retrofitCore", "kotlinxSerializationConverter", "serializationJson"
 compose = ["composeFoundation", "androidx-ui", "androidx-ui-graphics", "androidx-ui-tooling", "androidx-ui-tooling-preview", "lottie", "coil"]
 lifecycle = ["viewmodelKtx", "livedataKtx", "livedataRuntime", "androidx-lifecycle-runtime-ktx"]
 room = ["roomKtx", "roomRuntime"]
-koin = ["koin", "koinNavigation"]
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 hiltAndroidGradlePlugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-symbolProcessing = { id = "com.google.devtools.ksp", version.ref = "kotlinSymbolProcessing" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+safeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
+junit5Android = { id = "de.mannodermaus.android-junit5", version.ref = "androidJUnit5" }
+testLogger = { id = "com.adarshr.test-logger", version.ref = "testLogger" }
 

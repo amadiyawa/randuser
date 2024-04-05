@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    kotlin("plugin.serialization") version "1.5.30"
+    alias(libs.plugins.kotlin.symbolProcessing)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -41,6 +42,8 @@ android {
 
 dependencies {
     api(projects.featureBase)
+
+    ksp(libs.roomCompiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

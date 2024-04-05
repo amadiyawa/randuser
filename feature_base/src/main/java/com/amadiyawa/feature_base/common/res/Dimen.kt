@@ -24,4 +24,9 @@ object Dimen {
     object Image {
         val size = 100.dp
     }
+
+    // Picture dimensions
+    object Picture {
+        val size = 48.dp
+    }
 }

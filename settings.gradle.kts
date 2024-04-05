@@ -2,7 +2,6 @@ rootProject.name = "EnnovTestApp"
 
 include(
     ":app",
-    ":core_theme",
     ":feature_users",
     ":feature_base"
 )

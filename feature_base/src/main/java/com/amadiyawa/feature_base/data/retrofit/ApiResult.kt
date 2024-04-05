@@ -1,6 +1,6 @@
 package com.amadiyawa.feature_base.data.retrofit
 
-interface ApiResult<T> {
+sealed interface ApiResult<T> {
     /**
      * Represents a network result that successfully received a response containing body data.
      */

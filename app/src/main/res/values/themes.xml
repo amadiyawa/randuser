@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.EnnovTestApp" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.EnnovTestApp" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/my_splash_color</item>
+    </style>
 </resources>

@@ -56,7 +56,6 @@ android {
 }
 
 dependencies {
-    implementation(projects.coreTheme)
     implementation(projects.featureUsers)
 
     testImplementation(libs.junit)
