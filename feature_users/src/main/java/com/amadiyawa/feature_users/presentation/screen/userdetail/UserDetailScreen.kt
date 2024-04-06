@@ -125,7 +125,7 @@ private fun UserDetail(user: User) {
 
     Column(
         modifier = Modifier
-        .padding(start = Dimen.Spacing.medium, end = Dimen.Spacing.medium)
+        .padding(start = Dimen.Spacing.small, end = Dimen.Spacing.small)
         .verticalScroll(scrollState)
     ) {
         LocationCard(user.location)
