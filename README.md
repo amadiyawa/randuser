@@ -45,4 +45,8 @@ There are a few ways to open this project.
 
 ## License
 
+<<<<<<< HEAD
 No license
+=======
+No license
+>>>>>>> 46883e31b003e1d7244a8334823220867b64412d
