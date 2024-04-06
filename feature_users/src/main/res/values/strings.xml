@@ -19,4 +19,7 @@
     <string name="email">Email\n</string>
     <string name="phone">Phone</string>
     <string name="cell">Cell</string>
+    <string name="street">Street</string>
+    <string name="timezone">Timezone</string>
+    <string name="coordinates">Coordinates</string>
 </resources>

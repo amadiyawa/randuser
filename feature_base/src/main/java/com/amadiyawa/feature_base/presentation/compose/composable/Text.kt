@@ -23,11 +23,13 @@ fun TextTitleLarge(
 fun TextTitleMedium(
     text: String,
     modifier: Modifier = Modifier,
+    fontWeight: FontWeight = FontWeight.Normal,
 ) {
     Text(
         text = text,
         modifier = modifier,
         style = MaterialTheme.typography.titleMedium,
+        fontWeight = fontWeight
     )
 }
 

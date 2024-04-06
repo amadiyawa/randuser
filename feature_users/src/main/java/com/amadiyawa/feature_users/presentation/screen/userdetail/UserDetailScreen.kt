@@ -1,5 +1,6 @@
 package com.amadiyawa.feature_users.presentation.screen.userdetail
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,11 +18,15 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -32,6 +37,7 @@ import com.amadiyawa.feature_base.common.res.Dimen
 import com.amadiyawa.feature_base.common.util.formatDobString
 import com.amadiyawa.feature_base.presentation.compose.composable.DataNotFoundAnim
 import com.amadiyawa.feature_base.presentation.compose.composable.DrawHorizontalDottedLine
+import com.amadiyawa.feature_base.presentation.compose.composable.ExpandableRow
 import com.amadiyawa.feature_base.presentation.compose.composable.LoadingAnimation
 import com.amadiyawa.feature_base.presentation.compose.composable.PlaceholderImage
 import com.amadiyawa.feature_base.presentation.compose.composable.TextTitleLarge
@@ -118,7 +124,9 @@ private fun UserDetail(user: User) {
     Spacer(modifier = Modifier.height(Dimen.Spacing.medium))
 
     Column(
-        modifier = Modifier.verticalScroll(scrollState)
+        modifier = Modifier
+        .padding(start = Dimen.Spacing.medium, end = Dimen.Spacing.medium)
+        .verticalScroll(scrollState)
     ) {
         LocationCard(user.location)
         DobCard(userDob = user.dob)
@@ -164,6 +172,8 @@ private fun UserOverview(user: User) {
 
 @Composable
 private fun LocationCard(userLocation: Location) {
+    var expanded by remember { mutableStateOf (false) }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -179,7 +189,10 @@ private fun LocationCard(userLocation: Location) {
                     .fillMaxWidth()
                     .padding(16.dp)
             ) {
-                TextTitleMedium(text = stringResource(id = R.string.location))
+                TextTitleMedium(
+                    text = stringResource(id = R.string.location),
+                    fontWeight = FontWeight.Bold
+                )
             }
 
             DrawHorizontalDottedLine(
@@ -262,6 +275,81 @@ private fun LocationCard(userLocation: Location) {
                     )
                 }
             }
+
+            HorizontalDivider(thickness = 2.dp, color = MaterialTheme.colorScheme.background)
+
+            ExpandableRow(
+                modifier = Modifier
+                    .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
+                expanded = expanded
+            ) {
+                expanded = !expanded
+            }
+
+            AnimatedVisibility(visible = expanded) {
+                MoreLocationInfo(userLocation = userLocation)
+            }
+        }
+    }
+}
+
+@Composable
+private fun MoreLocationInfo(userLocation: Location) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
+    ) {
+        Row {
+            Text(
+                text = stringResource(id = R.string.street),
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+
+            Spacer(Modifier.weight(1f))
+
+            Text(
+                text = userLocation.street.name + " " + userLocation.street.number,
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSurface,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+        Row {
+            Text(
+                text = stringResource(id = R.string.coordinates),
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+
+            Spacer(Modifier.weight(1f))
+
+            Text(
+                text = userLocation.coordinates.latitude + " " + userLocation.coordinates.longitude,
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSurface,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+        Row {
+            Text(
+                text = stringResource(id = R.string.timezone),
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+
+            Spacer(Modifier.weight(1f))
+
+            Text(
+                text = userLocation.timezone.offset + " " + userLocation.timezone.description,
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSurface,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 }
@@ -283,7 +371,10 @@ private fun DobCard(userDob: Dob) {
                     .fillMaxWidth()
                     .padding(16.dp)
             ) {
-                TextTitleMedium(text = stringResource(id = R.string.date_of_birth))
+                TextTitleMedium(
+                    text = stringResource(id = R.string.date_of_birth),
+                    fontWeight = FontWeight.Bold
+                )
             }
 
             DrawHorizontalDottedLine(
@@ -338,7 +429,10 @@ private fun RegisteredCard(userRegistered: Registered) {
                     .fillMaxWidth()
                     .padding(16.dp)
             ) {
-                TextTitleMedium(text = stringResource(id = R.string.registered))
+                TextTitleMedium(
+                    text = stringResource(id = R.string.registered),
+                    fontWeight = FontWeight.Bold
+                )
             }
 
             DrawHorizontalDottedLine(
@@ -393,7 +487,10 @@ private fun IdCard(userId: Id) {
                     .fillMaxWidth()
                     .padding(16.dp)
             ) {
-                TextTitleMedium(text = stringResource(id = R.string.id_card))
+                TextTitleMedium(
+                    text = stringResource(id = R.string.id_card),
+                    fontWeight = FontWeight.Bold
+                )
             }
 
             DrawHorizontalDottedLine(
@@ -464,7 +561,10 @@ private fun ContactCard(user: User) {
                     .fillMaxWidth()
                     .padding(16.dp)
             ) {
-                TextTitleMedium(text = stringResource(id = R.string.contact))
+                TextTitleMedium(
+                    text = stringResource(id = R.string.contact),
+                    fontWeight = FontWeight.Bold
+                )
             }
 
             DrawHorizontalDottedLine(
