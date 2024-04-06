@@ -47,4 +47,17 @@ internal class UserRepositoryImpl(
                 Result.Success(users)
             }
         }
+
+    override suspend fun getUserByUuid(uuid: String): Result<User> =
+        try {
+            val user = userDao
+                .getUserByUuid(uuid)
+                .toDomainModel()
+
+            Result.Success(user)
+        } catch (e: Exception) {
+            Timber.e(e)
+            Result.Failure()
+        }
+
 }

@@ -27,6 +27,7 @@ object Dimen {
 
     // Picture dimensions
     object Picture {
-        val size = 48.dp
+        val smallSize = 48.dp
+        val mediumSize = 72.dp
     }
 }

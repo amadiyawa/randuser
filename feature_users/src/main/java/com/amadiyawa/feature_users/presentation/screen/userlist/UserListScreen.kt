@@ -24,7 +24,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -83,11 +85,18 @@ private fun SetupContent(
     listState: LazyListState,
     onUserClick: (String) -> Unit
 ) {
+    val uiState: UserListViewModel.UiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
+
     Column(modifier = Modifier
         .fillMaxSize()
-        .padding(paddingValues)){
-        val uiState: UserListViewModel.UiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
-        HandleUiState(uiState, listState, onUserClick)
+        .padding(paddingValues)
+    ){
+        HandleUiState(
+            uiState = uiState,
+            listState = listState,
+            onUserClick = onUserClick,
+            viewModel = viewModel
+        )
     }
 }
 
@@ -95,7 +104,8 @@ private fun SetupContent(
 private fun HandleUiState(
     uiState: UserListViewModel.UiState,
     listState: LazyListState,
-    onUserClick: (String) -> Unit
+    onUserClick: (String) -> Unit,
+    viewModel: UserListViewModel
 ) {
     uiState.let {
         when (it) {
@@ -114,19 +124,27 @@ private fun HandleUiState(
                         .fillMaxWidth()
                         .padding(top = 10.dp, start = 10.dp, end = 10.dp),
                     content = {
-                        users.forEach { user ->
-                            item(user.login.uuid){
-                                UserCard(
-                                    user = user,
-                                    onUserClick = {
-                                        onUserClick(user.login.uuid)
-                                    }
-                                )
-                            }
+                        items(users.size) { index ->
+                            UserCard(
+                                user = users[index],
+                                onUserClick = {
+                                    onUserClick(users[index].login.uuid)
+                                }
+                            )
                         }
                     },
                     state = listState,
                 )
+
+                // Detect when the user has scrolled to the end of the list
+                LaunchedEffect(listState) {
+                    snapshotFlow { listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index }
+                        .collect { lastIndex ->
+                            if (lastIndex == users.size - 1) {
+                                viewModel.onEnter()
+                            }
+                        }
+                }
             }
         }
     }
@@ -149,18 +167,19 @@ private fun UserCard(
         Row(
             modifier = Modifier.padding(Dimen.Spacing.medium)
         ) {
-            Row(modifier = Modifier.size(Dimen.Picture.size)) {
+            Row(modifier = Modifier.size(Dimen.Picture.smallSize)) {
                 PlaceholderImage(
                     url = user.picture.large,
                     contentDescription = user.picture.thumbnail,
-                    gender = user.gender
+                    gender = user.gender,
+                    size = Dimen.Picture.smallSize
                 )
             }
 
             Spacer(modifier = Modifier.size(Dimen.Spacing.large))
 
             Column(
-                modifier = Modifier.height(Dimen.Picture.size)
+                modifier = Modifier.height(Dimen.Picture.smallSize)
             ) {
                 TextTitleMedium(
                     text = user.name.title + " " + user.name.first + " " + user.name.last,

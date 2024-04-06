@@ -13,6 +13,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.amadiyawa.feature_base.R
@@ -36,6 +37,7 @@ fun PlaceholderImage(
     contentDescription: String?,
     gender: String?,
     modifier: Modifier = Modifier,
+    size: Dp
 ) {
     Surface(
         modifier = modifier,
@@ -57,7 +59,7 @@ fun PlaceholderImage(
             placeholder = painterResource(placeholder),
             modifier = Modifier
                 .clip(CircleShape)
-                .size(Dimen.Picture.size)
+                .size(size)
         )
     }
 }

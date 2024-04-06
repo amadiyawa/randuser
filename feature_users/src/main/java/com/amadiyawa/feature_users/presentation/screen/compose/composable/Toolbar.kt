@@ -28,7 +28,7 @@ fun Toolbar(
     centered: Boolean,
     title: String = stringResource(id = R.string.empty_toolbar_title),
     onBackClick: (() -> Unit)?,
-    backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant,
+    backgroundColor: Color = MaterialTheme.colorScheme.surface,
 ){
     if (centered) {
         CenterAlignedTopAppBar(

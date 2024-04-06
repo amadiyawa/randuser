@@ -11,6 +11,9 @@ internal interface UserDao {
     @Query("SELECT * FROM users")
     suspend fun getAllUsers(): List<UserEntityModel>
 
+    @Query("SELECT * FROM users WHERE uuid = :uuid")
+    suspend fun getUserByUuid(uuid: String): UserEntityModel
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUsers(users: List<UserEntityModel>)
 }

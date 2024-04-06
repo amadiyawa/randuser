@@ -23,23 +23,22 @@ internal class UserListViewModel(
     private val getUserListUseCase: GetUserListUseCase,
 ) : BaseViewModel<UiState, Action>(Loading) {
 
-    fun onEnter(page: Int = 1, results: Int = 10) {
-        getUserList(page, results)
+    private var currentPage = 1
+
+    fun onEnter() {
+        getUserList()
     }
 
     private var job: Job? = null
 
-    private fun getUserList(
-        page: Int = 1,
-        results: Int = 10
-    ) {
+    private fun getUserList() {
         if (job != null) {
             job?.cancel()
             job = null
         }
 
         job = viewModelScope.launch {
-            getUserListUseCase(page, results).also { result ->
+            getUserListUseCase(currentPage, 10).also { result ->
                 val action = when (result) {
                     is Result.Success -> {
                         if (result.value.isEmpty()) {
@@ -54,16 +53,27 @@ internal class UserListViewModel(
                     }
                 }
                 sendAction(action)
+                if (result is Result.Success) {
+                    currentPage++
+                }
             }
         }
     }
 
     internal sealed interface Action : BaseAction<UiState> {
-        class UserListLoadSuccess(private val users: List<User>) : Action {
-            override fun reduce(state: UiState) = Content(users)
+        data class UserListLoadSuccess(private val newUsers: List<User>) : Action {
+            override fun reduce(state: UiState): UiState {
+                return if (state is Content) {
+                    // If the current state is Content, append the new users to the existing list
+                    Content(state.users + newUsers)
+                } else {
+                    // If the current state is not Content, replace the state with the new users
+                    Content(newUsers)
+                }
+            }
         }
 
-        object UserListLoadFailure : Action {
+        data object UserListLoadFailure : Action {
             override fun reduce(state: UiState) = Error
         }
     }

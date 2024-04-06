@@ -3,7 +3,7 @@ package com.amadiyawa.feature_users.presentation.navigation
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.amadiyawa.feature_base.presentation.navigation.AppNavigationDestination
-import com.amadiyawa.feature_users.presentation.screen.userldetail.UserDetailScreen
+import com.amadiyawa.feature_users.presentation.screen.userdetail.UserDetailScreen
 
 object UserDetailNavigation: AppNavigationDestination {
     private const val USER_DETAIL = "user_detail/{userId}"
