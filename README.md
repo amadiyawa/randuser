@@ -21,8 +21,8 @@ The app has a two screens from feature_users module:
 
 <p>
   <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/splash.png" width="250" />
-  <img src="misc/image/screen_album_detail.webp" width="250" />
-  <img src="misc/image/screen_favorites.webp" width="250" />
+  <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_list.png" width="250" />
+  <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_detail.png" width="250" />
 </p>
 
 ## Architecture
@@ -45,8 +45,4 @@ There are a few ways to open this project.
 
 ## License
 
-<<<<<<< HEAD
 No license
-=======
-No license
->>>>>>> 46883e31b003e1d7244a8334823220867b64412d
