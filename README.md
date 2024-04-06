@@ -20,7 +20,7 @@ The app has a two screens from feature_users module:
 <br/><br/>
 
 <p>
-  <img src="misc/image/screen_album_list.webp" width="250" />
+  <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/splash.png" width="250" />
   <img src="misc/image/screen_album_detail.webp" width="250" />
   <img src="misc/image/screen_favorites.webp" width="250" />
 </p>
