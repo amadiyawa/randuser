@@ -12,14 +12,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
-import com.amadiyawa.ennovtestapp.presentation.navigation.EnnovTestAppNavHost
+import com.amadiyawa.ennovtestapp.presentation.navigation.AppNavHost
 import com.amadiyawa.feature_base.presentation.navigation.AppState
 import com.amadiyawa.feature_base.presentation.navigation.rememberAppState
 import com.amadiyawa.feature_base.presentation.theme.AppTheme
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun EnnovTestApp(
+fun RandusersApp(
     windowSizeClass: WindowSizeClass,
     appState: AppState = rememberAppState(windowSizeClass = windowSizeClass)
 ) {
@@ -36,7 +36,7 @@ fun EnnovTestApp(
                     .fillMaxSize()
                     .padding(it)
             ) {
-                EnnovTestAppNavHost(
+                AppNavHost(
                     navController = appState.navController,
                     onNavigateToDestination = appState::navigate,
                     onBackClick = appState::onBackClick,

@@ -11,7 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
-import com.amadiyawa.ennovtestapp.presentation.screen.EnnovTestApp
+import com.amadiyawa.ennovtestapp.presentation.screen.RandusersApp
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
-            EnnovTestApp(windowSizeClass = calculateWindowSizeClass(activity = this@MainActivity))
+            RandusersApp(windowSizeClass = calculateWindowSizeClass(activity = this@MainActivity))
         }
     }
 }
@@ -28,5 +28,5 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    EnnovTestApp(windowSizeClass = WindowSizeClass.calculateFromSize(DpSize(0.dp, 0.dp)))
+    RandusersApp(windowSizeClass = WindowSizeClass.calculateFromSize(DpSize(0.dp, 0.dp)))
 }

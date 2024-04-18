@@ -1,6 +1,5 @@
 package com.amadiyawa.ennovtestapp.presentation.navigation
 
-import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -11,7 +10,7 @@ import com.amadiyawa.feature_users.presentation.navigation.userDetailGraph
 import com.amadiyawa.feature_users.presentation.navigation.userListGraph
 
 @Composable
-fun EnnovTestAppNavHost(
+fun AppNavHost(
     navController: NavHostController,
     onNavigateToDestination: (AppNavigationDestination, String?) -> Unit,
     onBackClick: () -> Unit,
