@@ -1,6 +1,5 @@
 package com.amadiyawa.feature_base.presentation.compose.composable
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Surface
@@ -17,7 +16,6 @@ import androidx.compose.ui.unit.Dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.amadiyawa.feature_base.R
-import com.amadiyawa.feature_base.common.res.Dimen
 
 /**
  * `PlaceholderImage` is a composable function that displays an image from a provided URL with a placeholder.

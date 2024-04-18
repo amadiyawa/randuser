@@ -1,3 +1,5 @@
+@file:JvmName("AppStateKt")
+
 package com.amadiyawa.feature_base.presentation.navigation
 
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
@@ -7,11 +9,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun rememberEnnovTestAppState(
+fun rememberAppState(
     windowSizeClass: WindowSizeClass,
     navController: NavHostController = rememberNavController()
-): EnnovTestAppState {
+): AppState {
     return remember(windowSizeClass, navController){
-        EnnovTestAppState(windowSizeClass, navController)
+        AppState(navController)
     }
 }
