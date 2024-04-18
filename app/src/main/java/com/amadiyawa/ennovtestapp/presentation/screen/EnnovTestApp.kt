@@ -15,7 +15,7 @@ import androidx.compose.ui.semantics.testTagsAsResourceId
 import com.amadiyawa.ennovtestapp.presentation.navigation.EnnovTestAppNavHost
 import com.amadiyawa.feature_base.presentation.navigation.EnnovTestAppState
 import com.amadiyawa.feature_base.presentation.navigation.rememberEnnovTestAppState
-import com.amadiyawa.feature_base.presentation.theme.EnnovTestAppTheme
+import com.amadiyawa.feature_base.presentation.theme.AppTheme
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -23,7 +23,7 @@ fun EnnovTestApp(
     windowSizeClass: WindowSizeClass,
     appState: EnnovTestAppState = rememberEnnovTestAppState(windowSizeClass = windowSizeClass)
 ) {
-    EnnovTestAppTheme {
+    AppTheme {
         Scaffold(
             modifier = Modifier.semantics {
                 testTagsAsResourceId = true
