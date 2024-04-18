@@ -165,7 +165,8 @@ private fun UserCard(
         )
     ) {
         Row(
-            modifier = Modifier.padding(Dimen.Spacing.medium)
+            modifier = Modifier.padding(Dimen.Spacing.medium),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Row(modifier = Modifier.size(Dimen.Picture.smallSize)) {
                 PlaceholderImage(
@@ -184,10 +185,10 @@ private fun UserCard(
                 TextTitleMedium(
                     text = user.name.title + " " + user.name.first + " " + user.name.last,
                 )
-                
+
                 TextTitleSmall(text = user.phone)
             }
-            
+
             Spacer(modifier = Modifier.weight(1f))
 
             Row {

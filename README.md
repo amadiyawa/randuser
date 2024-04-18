@@ -21,8 +21,10 @@ The app has two screens from the feature_users module:
 
 <p>
   <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/splash.png" width="250" />
-  <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_list.png" width="250" />
-  <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_detail.png" width="250" />
+  <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_list_dark.png" width="250" />
+  <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_detail_dark.png" width="250" />
+  <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_list_light.png" width="250" />
+  <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_detail_light.png" width="250" />
 </p>
 
 ## Architecture
