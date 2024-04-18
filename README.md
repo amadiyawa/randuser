@@ -1,6 +1,6 @@
-# Ennov Test App 1.0
+# Randusers 1.0
 
-Ennov test App is a simple Android application that retrieves and displays a list of users from the following API:
+Randusers is a simple Android application that retrieves and displays a list of users from the following API:
 
 [https://randomuser.me/api/?page=1&results=10&seed=weenect](https://randomuser.me/api/?page=1&results=10&seed=weenect)
 
@@ -12,7 +12,7 @@ Ennov test App is a simple Android application that retrieves and displays a lis
 - Implement an offline mode to display previously fetched data when there is no internet connection.
 - Manage network errors and other potential issues gracefully
 
-The app has a two screens from feature_users module:
+The app has two screens from the feature_users module:
 
 - User list screen - displays list of users
 - User detail screen - display information about the selected user
@@ -27,7 +27,7 @@ The app has a two screens from feature_users module:
 
 ## Architecture
 
-The project must follow the MVVM pattern, respects the standards of Clean Architecture and use Jetpack Compose.
+The project follow the MVVM pattern, respects the standards of Clean Architecture and use Jetpack Compose.
 
 ## Getting Started
 
