@@ -20,11 +20,11 @@ The app has two screens from the feature_users module:
 <br/><br/>
 
 <p>
-  <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/splash.png" width="250" />
-  <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_list_dark.png" width="250" />
-  <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_detail_dark.png" width="250" />
-  <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_list_light.png" width="250" />
-  <img src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_detail_light.png" width="250" />
+  <img alt="Splash screen" src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/splash.png" width="250" />
+  <img alt="User list screen in dark mode" src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_list_dark.png" width="250" />
+  <img alt="User detail screen in dark mode" src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_detail_dark.png" width="250" />
+  <img alt="User list screen in light mode" src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_list_light.png" width="250" />
+  <img alt="User detail screen in light mode" src="https://github.com/amadiyawa/ennov_test_app/blob/main/app_screenshots/user_detail_light.png" width="250" />
 </p>
 
 ## Architecture
