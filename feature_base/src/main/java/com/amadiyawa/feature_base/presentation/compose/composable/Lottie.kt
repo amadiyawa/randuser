@@ -2,10 +2,11 @@ package com.amadiyawa.feature_base.presentation.compose.composable
 
 import androidx.annotation.RawRes
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,12 +22,13 @@ import com.amadiyawa.feature_base.common.res.Dimen
 fun LabeledAnimation(@StringRes label: Int, @RawRes assetResId: Int) {
     Card(
         modifier = Modifier
-            .wrapContentSize(),
+            .fillMaxSize(),
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
             modifier = Modifier
-                .wrapContentSize()
+                .fillMaxSize()
                 .padding(Dimen.Spacing.extraLarge),
         ) {
             TextTitleMedium(text = stringResource(label))
