@@ -1,6 +1,6 @@
-# Randusers 1.0
+# RandUser
 
-Randusers is a simple Android application that retrieves and displays a list of users from the following API:
+RandUser is a simple Android application that retrieves and displays a list of users from the following API:
 
 [https://randomuser.me/api/?page=1&results=10&seed=weenect](https://randomuser.me/api/?page=1&results=10&seed=weenect)
 
