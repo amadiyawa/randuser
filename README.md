@@ -38,11 +38,11 @@ There are a few ways to open this project.
 ### Android Studio
 
 1. `Android Studio` -> `File` -> `New` -> `From Version control` -> `Git`
-2. Enter `https://github.com/amadiyawa/ennov_test_app.git` into URL field and press `Clone` button
+2. Enter `https://github.com/amadiyawa/randusers` into URL field and press `Clone` button
 
 ### Command-line And Android Studio
 
-1. Run `git clone https://github.com/amadiyawa/ennov_test_app.git` command to clone the project
+1. Run `git clone https://github.com/amadiyawa/randusers` command to clone the project
 2. Open `Android Studio` and select `File | Open...` from the menu. Select the cloned directory and press `Open` button
 
 ## License
